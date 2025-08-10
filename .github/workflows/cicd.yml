@@ -1,1 +1,29 @@
+name: Git Actions CI/CD
+on:
+  push:
+    branches:
+      - main
+  
+  pull_request:
+    branches:
+      - main
 
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Clone
+        uses: actions/checkout@v2
+      - name: Read hello.txt
+        run: echo "This Is Test Job"
+  build_job:
+    needs: test_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Clone
+        uses: actions/checkout@v2
+      - name: Set Up Node js.
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
