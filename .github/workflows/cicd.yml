@@ -3,13 +3,10 @@ on:
   push:
     branches:
       - main
-      - dev
-  
+      
   pull_request:
     branches:
       - main
-      - dev 
-
 
 jobs:
   test_job:
@@ -31,7 +28,3 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: '22'
-
-      - name: run node js
-        run: |
-          npm run build
